@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Quiz</title>
+    <link rel="stylesheet" href="mathquiz_styles.css">
+</head>
+<body>
+    
+<p id="a"></p> *
+<p id="b"></p>
+
+<form>
+Student Answer: 
+  <input type="text" id="studentAnswer" name="studentAnswer">
+  <input type="button" onclick="compare()" value="Check Answer">
+</form>
+
+<p>Your Answer was: <span id="showStudentAnswer"></span> </p>
+<p>Correct Answer: <span id="correctAnswer"></span></p>
+<p>Result: <span id="result"></span></p>
+
+ <script src="mathquiz_script.js"></script> 
+</body>
+</html>
