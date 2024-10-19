@@ -12,30 +12,84 @@
 
 
 
-// Provides two random #s to Multiply
-let a = document.getElementById("a").innerHTML =
-Math.floor(Math.random() * 10);
 
-let b = document.getElementById("b").innerHTML =
-Math.floor(Math.random() * 10);
+    let currentOperation = 'addition'; // Default operation
+    let currentProblem = generateProblem(); // Initial problem setup
 
-//Multiplies the two random #s.
-let z = a * b;
+    // Function to set the operation type
+    function setOperation(operation) {
+      currentOperation = operation;
+      next(); // Generate a new problem with the selected operation
+    }
 
+    // Function to generate a new problem based on the selected operation
+    function generateProblem() {
+      let a = Math.floor(Math.random() * 10) + 1; // Random number between 1 and 10
+      let b = Math.floor(Math.random() * 10) + 1; // Random number between 1 and 10
+      let correctAnswer;
 
-// Compare Student Answer vs Correct Answer
-const resultDisplay = document.getElementById('result')
+      // Determine the correct answer based on the selected operation
+      switch (currentOperation) {
+        case 'addition':
+          correctAnswer = a + b;
+          document.getElementById('operation').textContent = '+';
+          break;
+        case 'subtraction':
+          if (a < b) {
+            // Ensure a is always greater than or equal to b to avoid negative answers
+            [a, b] = [b, a];
+          }
+          correctAnswer = a - b;
+          document.getElementById('operation').textContent = '-';
+          break;
+        case 'multiplication':
+          correctAnswer = a * b;
+          document.getElementById('operation').textContent = '×';
+          break;
+        case 'division':
+          // Ensure the numbers are divisible to avoid decimals
+          while (a % b !== 0) {
+            a = Math.floor(Math.random() * 10) + 1;
+            b = Math.floor(Math.random() * 10) + 1;
+          }
+          correctAnswer = a / b;
+          document.getElementById('operation').textContent = '÷';
+          break;
+      }
 
-function compare() {
-    let studentAnswer =             document.getElementById('studentAnswer').value;
-      if (studentAnswer == z) {
+      // Display the numbers in the HTML
+      document.getElementById('a').textContent = a;
+      document.getElementById('b').textContent = b;
+
+      // Reset feedback sections
+      document.getElementById('showStudentAnswer').textContent = '';
+      document.getElementById('correctAnswer').textContent = '';
+      document.getElementById('result').textContent = '';
+      document.getElementById('studentAnswer').value = ''; // Reset input field
+
+      // Return the current problem values for comparison
+      return { a, b, correctAnswer };
+    }
+
+    // Function to compare the student's answer with the correct answer
+    function compare() {
+      let studentAnswer = document.getElementById('studentAnswer').value;
+      let result;
+
+      // Check if the student's answer is correct
+      if (parseInt(studentAnswer) === currentProblem.correctAnswer) {
         result = "Correct!";
-      }    
-      else {
+      } else {
         result = "Try Again!";
       }
-// Display 
-    resultDisplay.innerHTML = result
-  document.getElementById("correctAnswer").innerHTML = a * b;
-    document.getElementById("showStudentAnswer").innerHTML = studentAnswer;
+
+      // Display the result, student's answer, and correct answer
+      document.getElementById("showStudentAnswer").textContent = studentAnswer;
+      document.getElementById("correctAnswer").textContent = currentProblem.correctAnswer;
+      document.getElementById("result").textContent = result;
+    }
+
+    // Function to generate a new problem when the "Next" button is clicked
+    function next() {
+      currentProblem = generateProblem(); // Re-generate the problem and update variables
     }
