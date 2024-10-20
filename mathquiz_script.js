@@ -13,6 +13,7 @@
 
 
 
+  
     let currentOperation = 'addition'; // Default operation
     let currentProblem = generateProblem(); // Initial problem setup
 
@@ -75,21 +76,40 @@
     function compare() {
       let studentAnswer = document.getElementById('studentAnswer').value;
       let result;
+      let scoreElement = document.getElementById("score"); // Get the score element
+      let currentScore = parseInt(scoreElement.value); // Get the current score value
+
 
       // Check if the student's answer is correct
       if (parseInt(studentAnswer) === currentProblem.correctAnswer) {
         result = "Correct!";
+        currentScore += 7;
       } else {
-        result = "Try Again!";
+        result = "Try Again";
+        currentScore -= 3;
+      }
+      // Make sure the score doesn't exceed 100 or go below 0
+      if (currentScore >= 100) {
+        currentScore = 100; // Cap score at 100
+        result = "You Completed the Quiz!";
+        document.getElementById('next').disabled = true; // Disable the check answer button
+      }  else if (currentScore < 0) {
+        currentScore = 0; // Ensure score doesn't go below 0
       }
 
+  // Update the score in HTML
+  scoreElement.value = currentScore;
+      
+    
       // Display the result, student's answer, and correct answer
       document.getElementById("showStudentAnswer").textContent = studentAnswer;
       document.getElementById("correctAnswer").textContent = currentProblem.correctAnswer;
       document.getElementById("result").textContent = result;
     }
 
-    // Function to generate a new problem when the "Next" button is clicked
+    // Generate a new problem when the "Next" button is clicked
     function next() {
       currentProblem = generateProblem(); // Re-generate the problem and update variables
     }
+
+
