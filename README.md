@@ -1,7 +1,7 @@
 # mathquiz
 
 
-beta 0.2 contents
+Steos
 
 1) Get two random #s. ✅
 2) Multiply those two #s. ✅
