@@ -8,33 +8,37 @@
 </head>
 <body>
     
- <div>
-    <div>
+<div>
+    <div id="problem">
       <p class="problem" id="a"></p>
-      <p class="problem" id="operation">*</p>
-      <p class="problem" id="b"></p> =
+      <p class="problem" id="operation"></p>
+      <p class="problem" id="b"></p> 
     </div>
   </div>
 
-
-<form>
+<div id="input">
+  <form>
     Student Answer: 
-    <input type="text" id="studentAnswer" name="studentAnswer">
-    <input type="button" id="myBtn" onclick="compare()" value="Check Answer">
+    <input type="text" id="studentAnswer" name="studentAnswer">  
   </form>
-   <button id="next" onclick="next()">Keep Practicing</button>
+  <input class="input" type="button" id="myBtn" onclick="compare()" value="Check Answer">
+  <button class="input" id="next" onclick="next()">Keep Practicing >> </ button>
+</div>
 
-
+<div>
   <p>Your Answer was: <span id="showStudentAnswer"></span> </p>
   <p>Correct Answer: <span id="correctAnswer"></span></p>
   <p>Result: <span id="result"></span></p>
-
+  <p>Score: <input type="number" id="score" value="0" readonly>
+</p>
+</div>
  
-
-  <button onclick="setOperation('addition')">Addition (+)</button>
-  <button onclick="setOperation('subtraction')">Subtraction (-)</button>
-  <button onclick="setOperation('multiplication')">Multiplication (×)</button>
-  <button onclick="setOperation('division')">Division (÷)</button>
+<div>
+  <button class="operator" onclick="setOperation('addition')">Addition (+)</button>
+  <button class="operator" onclick="setOperation('subtraction')">Subtraction (-)</button>
+  <button class="operator" onclick="setOperation('multiplication')">Multiplication (×)</button>
+  <button class="operator" onclick="setOperation('division')">Division (÷)</button>
+</div>
 
  <script src="mathquiz_script.js"></script> 
 </body>
