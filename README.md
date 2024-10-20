@@ -1,7 +1,7 @@
 # mathquiz
 
 
-Steos
+Steps
 
 1) Get two random #s. ✅
 2) Multiply those two #s. ✅
