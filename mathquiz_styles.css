@@ -11,14 +11,14 @@ container {
   align-items: center;
   font-size: 1.2em;
 }
-/*
-@media (max-width: 800px) {
+
+@media (max-width: 768px) {
 container {
   display: flex;
  flex-direction: column;
   }
 }
-*/
+
 button {
 cursor: pointer; 
 }
