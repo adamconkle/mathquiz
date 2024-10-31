@@ -10,10 +10,15 @@
 9) Check answer button adds "Your answer was..." ✅
 */
 
+/*
+Updates in Version 0.7
+1. Clean up CSS.
+2. Improved mobile responsiveness.
+3. Add timer, which ends when score reaches 100.
+4. Add # of answers correct before reaching 100. 
+*/
 
 
-
-  
     let currentOperation = 'addition'; // Default operation
     let currentProblem = generateProblem(); // Initial problem setup
 
@@ -79,6 +84,10 @@
       let scoreElement = document.getElementById("score"); // Get the score element
       let currentScore = parseInt(scoreElement.value); // Get the current score value
 
+      // Check that the student typed an answer
+      if (studentAnswer == "") {
+        alert("Please enter an answer before checking.");
+      }
 
       // Check if the student's answer is correct
       if (parseInt(studentAnswer) === currentProblem.correctAnswer) {
@@ -87,7 +96,7 @@
       } else {
         result = "Try Again";
         currentScore -= 3;
-      }
+      } 
       // Make sure the score doesn't exceed 100 or go below 0
       if (currentScore >= 100) {
         currentScore = 100; // Cap score at 100
@@ -111,5 +120,6 @@
     function next() {
       currentProblem = generateProblem(); // Re-generate the problem and update variables
     }
+
 
 
