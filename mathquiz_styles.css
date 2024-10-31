@@ -96,7 +96,7 @@ cursor: pointer;
   margin: 10px;
   transition: transform .4s;
   color: white;
-  font-size: 2em;
+  font-size: 6em;
 } 
 
 .operator:hover {
