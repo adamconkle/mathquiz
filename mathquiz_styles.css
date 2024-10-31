@@ -14,8 +14,11 @@ container {
 
 @media (max-width: 768px) {
 container {
-  display: flex;
+ display: flex;
  flex-direction: column;
+  }
+div {
+  max-width: 100%;
   }
 }
 
