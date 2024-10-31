@@ -18,7 +18,7 @@ container {
  flex-direction: column;
   }
 div {
-  max-width: 100%;
+  width: 100%;
   }
 }
 
