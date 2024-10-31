@@ -20,6 +20,12 @@ container {
   div {
     max-width: 100%;
   }
+  div #problem {
+    height: 100px;
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+  }
   div.divOperator {
     display: flex;
     flex-direction: row;
