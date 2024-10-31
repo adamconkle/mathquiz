@@ -15,7 +15,7 @@ container {
 @media (max-width: 800px) {
 container {
   display: flex;
-  flex-direction: column;
+ /* flex-direction: column;*/
   }
 }
 
