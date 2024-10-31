@@ -25,7 +25,7 @@ container {
     flex-direction: row;
   }
   button.operator {
-    width: 6em;
+    max-width: 6em;
   }
 }
 
