@@ -19,33 +19,6 @@ container {
   font-size: 1.2em;
 }
 
-@media (max-width: 800px) {
-  header {
-    display: none;
-  }
-  
-  container {
-    display: flex;
-    flex-direction: column;
-  }
-  div {
-    max-width: 100%;
-  }
-  div #problem {
-    height: 100px;
-    width: 300px;
-    display: flex;
-    flex-direction: row;
-  }
-  div.divOperator {
-    display: flex;
-    flex-direction: row;
-  }
-  button.operator {
-    max-width: 6em;
-  }
-}
-
 
 button {
 cursor: pointer; 
@@ -137,7 +110,35 @@ input[type=number] {
 }
 
 
-/*new CSS for progress bar - mostly unneseccary */        
+@media (max-width: 800px) {
+  header {
+    display: none;
+  }
+  
+  container {
+    display: flex;
+    flex-direction: column;
+  }
+  div {
+    max-width: 100%;
+  }
+  div #problem {
+    height: 100px;
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+  }
+  div.divOperator {
+    display: flex;
+    flex-direction: row;
+  }
+  button.operator {
+    max-width: 6em;
+  }
+}
+
+
+/*new CSS for progress bar  */        
         .score-container {
             width: 80%;
             max-width: 400px;
