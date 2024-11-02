@@ -178,6 +178,6 @@ input[type=number] {
 .progress-fill {
   height: 100%;
   width: 0%;
-  background-color: #4caf50;
+  background-color: #00c9a7;
   transition: width 0.3s;
 }
