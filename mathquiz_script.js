@@ -12,114 +12,99 @@
 
 /*
 Updates in Version 0.7
-1. Clean up CSS.
-2. Improved mobile responsiveness.
-3. Add timer, which ends when score reaches 100.
-4. Add # of answers correct before reaching 100. 
+1) Clean up CSS.
+2) Improved mobile responsiveness.
+3) Add timer, which ends when score reaches 100.
+4) Add # of answers correct before reaching 100. 
 */
 
+/*Updates in Version 0.8
+1) Progress bar
+*/
 
-    let currentOperation = 'addition'; // Default operation
-    let currentProblem = generateProblem(); // Initial problem setup
+let currentOperation = 'addition';
+let currentProblem = generateProblem(); // Initial problem setup
 
-    // Function to set the operation type
-    function setOperation(operation) {
-      currentOperation = operation;
-      next(); // Generate a new problem with the selected operation
-    }
+function setOperation(operation) {
+  currentOperation = operation;
+  next(); // Generate a new problem with the selected operation
+}
 
-    // Function to generate a new problem based on the selected operation
-    function generateProblem() {
-      let a = Math.floor(Math.random() * 10) + 1; // Random number between 1 and 10
-      let b = Math.floor(Math.random() * 10) + 1; // Random number between 1 and 10
-      let correctAnswer;
+function generateProblem() {
+  let a = Math.floor(Math.random() * 10) + 1;
+  let b = Math.floor(Math.random() * 10) + 1;
+  let correctAnswer;
 
-      // Determine the correct answer based on the selected operation
-      switch (currentOperation) {
-        case 'addition':
-          correctAnswer = a + b;
-          document.getElementById('operation').textContent = '+';
-          break;
-        case 'subtraction':
-          if (a < b) {
-            // Ensure a is always greater than or equal to b to avoid negative answers
-            [a, b] = [b, a];
-          }
-          correctAnswer = a - b;
-          document.getElementById('operation').textContent = '-';
-          break;
-        case 'multiplication':
-          correctAnswer = a * b;
-          document.getElementById('operation').textContent = '×';
-          break;
-        case 'division':
-          // Ensure the numbers are divisible to avoid decimals
-          while (a % b !== 0) {
-            a = Math.floor(Math.random() * 10) + 1;
-            b = Math.floor(Math.random() * 10) + 1;
-          }
-          correctAnswer = a / b;
-          document.getElementById('operation').textContent = '÷';
-          break;
+  switch (currentOperation) {
+    case 'addition':
+      correctAnswer = a + b;
+      document.getElementById('operation').textContent = '+';
+      break;
+    case 'subtraction':
+      if (a < b) [a, b] = [b, a];
+      correctAnswer = a - b;
+      document.getElementById('operation').textContent = '-';
+      break;
+    case 'multiplication':
+      correctAnswer = a * b;
+      document.getElementById('operation').textContent = '×';
+      break;
+    case 'division':
+      while (a % b !== 0) {
+        a = Math.floor(Math.random() * 10) + 1;
+        b = Math.floor(Math.random() * 10) + 1;
       }
+      correctAnswer = a / b;
+      document.getElementById('operation').textContent = '÷';
+      break;
+  }
 
-      // Display the numbers in the HTML
-      document.getElementById('a').textContent = a;
-      document.getElementById('b').textContent = b;
+  document.getElementById('a').textContent = a;
+  document.getElementById('b').textContent = b;
+  document.getElementById('studentAnswer').value = '';
+  document.getElementById('showStudentAnswer').textContent = '';
+  document.getElementById('correctAnswer').textContent = '';
+  document.getElementById('result').textContent = '';
 
-      // Reset feedback sections
-      document.getElementById('showStudentAnswer').textContent = '';
-      document.getElementById('correctAnswer').textContent = '';
-      document.getElementById('result').textContent = '';
-      document.getElementById('studentAnswer').value = ''; // Reset input field
+  return { a, b, correctAnswer };
+}
 
-      // Return the current problem values for comparison
-      return { a, b, correctAnswer };
-    }
+function compare() {
+  const studentAnswer = document.getElementById('studentAnswer').value;
+  const scoreElement = document.getElementById("scoreDisplay");
+  let currentScore = parseInt(scoreElement.textContent);
 
-    // Function to compare the student's answer with the correct answer
-    function compare() {
-      let studentAnswer = document.getElementById('studentAnswer').value;
-      let result;
-      let scoreElement = document.getElementById("score"); // Get the score element
-      let currentScore = parseInt(scoreElement.value); // Get the current score value
+  if (studentAnswer === "") {
+    alert("Please enter an answer before checking.");
+    return;
+  }
 
-      // Check that the student typed an answer
-      if (studentAnswer == "") {
-        alert("Please enter an answer before checking.");
-      }
+  let result;
+  if (parseInt(studentAnswer) === currentProblem.correctAnswer) {
+    result = "Correct!";
+    currentScore = Math.min(currentScore + 7, 100);
+  } else {
+    result = "Try Again";
+    currentScore = Math.max(currentScore - 3, 0);
+  }
 
-      // Check if the student's answer is correct
-      if (parseInt(studentAnswer) === currentProblem.correctAnswer) {
-        result = "Correct!";
-        currentScore += 7;
-      } else {
-        result = "Try Again";
-        currentScore -= 3;
-      } 
-      // Make sure the score doesn't exceed 100 or go below 0
-      if (currentScore >= 100) {
-        currentScore = 100; // Cap score at 100
-        result = "You Completed the Quiz!";
-        document.getElementById('next').disabled = true; // Disable the check answer button
-      }  else if (currentScore < 0) {
-        currentScore = 0; // Ensure score doesn't go below 0
-      }
+  if (currentScore === 100) {
+    result = "You Completed the Quiz!";
+    document.getElementById('next').disabled = true;
+  }
 
-  // Update the score in HTML
-  scoreElement.value = currentScore;
-      
-    
-      // Display the result, student's answer, and correct answer
-      document.getElementById("showStudentAnswer").textContent = studentAnswer;
-      document.getElementById("correctAnswer").textContent = currentProblem.correctAnswer;
-      document.getElementById("result").textContent = result;
-    }
+  document.getElementById("scoreDisplay").textContent = currentScore;
+  updateProgressBar(currentScore);
+  document.getElementById("showStudentAnswer").textContent = studentAnswer;
+  document.getElementById("correctAnswer").textContent = currentProblem.correctAnswer;
+  document.getElementById("result").textContent = result;
+}
 
-    // Generate a new problem when the "Next" button is clicked
-    function next() {
-      currentProblem = generateProblem(); // Re-generate the problem and update variables
-    }
+function next() {
+  currentProblem = generateProblem();
+}
 
-
-
+function updateProgressBar(score) {
+  const progressFill = document.getElementById("progressFill");
+  progressFill.style.width = `${score}%`;
+}
