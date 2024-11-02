@@ -1,8 +1,15 @@
+header {
+  height: 100px;
+  background-color: #1e1e1e;
+  color: white;
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
 body {
   font-family: Montserrat, Arial, sans-serif;
 }
-
-
 
 container {
   display: flex;
@@ -13,6 +20,10 @@ container {
 }
 
 @media (max-width: 800px) {
+  header {
+    display: none;
+  }
+  
   container {
     display: flex;
     flex-direction: column;
@@ -21,7 +32,7 @@ container {
     max-width: 100%;
   }
   div #problem {
-    height: 150px;
+    height: 100px;
     width: 300px;
     display: flex;
     flex-direction: row;
@@ -41,9 +52,7 @@ cursor: pointer;
 }
 
 #problem {
-  border: 5px solid black;
-  border-radius: 15px;
-  color: red;
+  color: black;
   padding: 10px;
   height: 300px;
   width: 200px;
@@ -78,8 +87,8 @@ cursor: pointer;
 #studentAnswer {
   font-size: 20px;
   max-width: 50px;
-  height: 40px;
-  border: 1px solid Dodgerblue;
+  height: 50px;
+  border: 1px solid black;
   border-radius: 10px;
   text-align: center;
 }
@@ -88,13 +97,13 @@ cursor: pointer;
 .operator {
   background-color:#1e1e1e;
   border:none;
-  border-radius: 10% 30% 50% 70%;
+  border-radius: 30%;
   height:50px;
   width:50px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin: 10px;
+  margin: 5px;
   transition: transform .4s;
   color: white;
   font-size: 2em;
@@ -110,6 +119,8 @@ cursor: pointer;
   font-size: 20px;
   font-weight: bold;
   color: green;
+  text-align:center;
+  vertical-align: text-bottom;
 }
 
 
@@ -123,4 +134,59 @@ input::-webkit-inner-spin-button {
 /* Removes Input increment on Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+
+/*new CSS for progress bar - mostly unneseccary */
+ body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .score-container {
+            width: 80%;
+            max-width: 400px;
+            margin: 20px;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .score {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        
+        .button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+/* Progress bar styling */
+/* Progress bar container and fill */
+.score-container {
+  width: 80%;
+  max-width: 400px;
+  margin: 20px;
+  text-align: center;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background-color: #4caf50;
+  transition: width 0.3s;
 }
