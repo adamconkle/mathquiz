@@ -83,3 +83,4 @@ function next() {
 function updateProgressBar(score) {
     document.getElementById("progressFill").style.width = `${score}%`;
 }
+ 
