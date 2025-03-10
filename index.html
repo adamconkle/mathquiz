@@ -3,58 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Quiz</title>
+    <title>Math Quest</title>
     <link rel="stylesheet" href="mathquiz_styles.css">
 </head>
 <body>
 
-<header><!-- hide on mobile -->
-    <h1>Math Practice</h1>
-</header> 
+<header>
+    <h1>⚡ Math Quest ⚡</h1>
+</header>
 
-<!-- Score-->
 <div class="score-container">
     <p>Score: <span id="scoreDisplay">0</span> / 100</p>
-    <!-- Progress Bar -->
     <div class="progress-bar">
         <div id="progressFill" class="progress-fill"></div>
     </div>
 </div>
 
+<div class="container">
+    <div id="problem-box">
+        <span id="a"></span>
+        <span id="operation"></span>
+        <span id="b"></span>
+    </div>
 
-<container>
-  <div id="problem">
-      <p class="problem" id="a"></p>
-      <p class="problem" id="operation"></p>
-      <p class="problem" id="b"></p> 
-  </div>
-  <div id="input">
-    <form>
-    Student Answer =
-      <input type="text" id="studentAnswer" name="studentAnswer">  
-    </form>
-    <input class="input" type="button" id="myBtn" onclick="compare()" value="Check Answer">
-    <button class="input" id="next" onclick="next()">Keep Practicing </ button>
-  </div>
+    <div id="input-area">
+        <p>Your Answer:</p>
+        <input type="number" id="studentAnswer" name="studentAnswer" placeholder="?" />
+        <button id="myBtn" onclick="compare()">✅ Check</button>
+        <button id="next" onclick="next()">🔄 Next</button>
+    </div>
 
-  <div>
-    <p>Your Answer was: <span id="showStudentAnswer"></span> </p>
-    <p>Correct Answer: <span id="correctAnswer"></span></p>
-    <p>Result: <span id="result"></span></p>
-  </div>
- 
-  <div class="divOperator">
-    <button class="operator" onclick="setOperation('addition')">+</button>
-    <button class="operator" onclick="setOperation('subtraction')">-</button>
-    <button class="operator" onclick="setOperation('multiplication')">x</button>
-    <button class="operator" onclick="setOperation('division')">÷</button></div>
-</container>
+    <div id="feedback">
+        <p>✨ Your Answer: <span id="showStudentAnswer"></span></p>
+        <p>🎯 Correct Answer: <span id="correctAnswer"></span></p>
+        <p id="result"></p>
+    </div>
 
+    <div class="operator-container">
+        <button class="operator" onclick="setOperation('addition')">➕</button>
+        <button class="operator" onclick="setOperation('subtraction')">➖</button>
+        <button class="operator" onclick="setOperation('multiplication')">✖️</button>
+        <button class="operator" onclick="setOperation('division')">➗</button>
+    </div>
+</div>
 
-
-
-
-
- <script src="mathquiz_script.js"></script> 
+<script src="mathquiz_script.js"></script>
 </body>
 </html>
