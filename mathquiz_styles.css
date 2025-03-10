@@ -1,183 +1,117 @@
-header {
-  height: 100px;
-  background-color: #1e1e1e;
-  color: white;
-  margin: 20px;
-  padding: 20px;
-  text-align: center;
-}
-
 body {
-  font-family: Montserrat, Arial, sans-serif;
+    font-family: 'Poppins', Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(to right, #4a00e0, #8e2de2);
+    color: white;
+    padding: 20px;
 }
 
-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  font-size: 1.2em;
+header {
+    font-size: 1.8em;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    border-radius: 10px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
 }
 
-
-button {
-cursor: pointer; 
-}
-
-#problem {
-  color: black;
-  padding: 10px;
-  height: 300px;
-  width: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  font-weight: bold;
-  font-size: 40px;
-  align-items: center;
-  line-height: 10%;
-}
-
-#input {
-  display: flex;
-  flex-direction: column;
-  font-size: 20px;
-  margin: 20px;
-}
-
-.input {
-  margin: 10px;
-  max-width: 200px;
-  color: Dodgerblue;
-  font-size: 1em;
-  cursor: pointer;
-}
-
-#next {
-  color: #555;
-}
-
-#studentAnswer {
-  font-size: 20px;
-  max-width: 50px;
-  height: 50px;
-  border: 1px solid black;
-  border-radius: 10px;
-  text-align: center;
-}
-
-/* Operator Buttons */
-.operator {
-  background-color:#1e1e1e;
-  border:none;
-  border-radius: 30%;
-  height:50px;
-  width:50px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin: 5px;
-  transition: transform .4s;
-  color: white;
-  font-size: 2em;
-} 
-
-.operator:hover {
-  transform: scale(1.1);
-} 
-
-
-#score {
-  border:none;
-  font-size: 20px;
-  font-weight: bold;
-  color: green;
-  text-align:center;
-  vertical-align: text-bottom;
-}
-
-
-/* Removes Input increment on Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Removes Input increment on Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
-
-@media (max-width: 800px) {
-  header {
-    display: none;
-  }
-  
-  container {
+.container {
     display: flex;
     flex-direction: column;
-  }
-  div {
-    max-width: 100%;
-  }
-  div #problem {
-    height: 100px;
-    width: 300px;
-    display: flex;
-    flex-direction: row;
-  }
-  div.divOperator {
-    display: flex;
-    flex-direction: row;
-  }
-  button.operator {
-    max-width: 6em;
-  }
+    align-items: center;
+    margin-top: 20px;
 }
 
+/* Center problem and input area */
+#problem-box {
+    font-size: 3em;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+}
 
-/*new CSS for progress bar  */        
-        .score-container {
-            width: 80%;
-            max-width: 400px;
-            margin: 20px;
-            text-align: center;
-            pointer-events: none;
-        }
+/* Input area: Align input field and buttons horizontally */
+#input-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
 
-        .score {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-        
-        .button {
-            padding: 10px 20px;
-            font-size: 1em;
-            cursor: pointer;
-        }
+input {
+    font-size: 1.5em;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    border: none;
+    width: 80px;
+}
 
-/* Progress bar styling */
-/* Progress bar container and fill */
+/* Ensure buttons align with the input */
+button {
+    background: #ff9800;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    background: #ff5722;
+}
+
+/* Operator buttons centered properly */
+.operator-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.operator {
+    background: #00c9a7;
+    border-radius: 50%;
+    font-size: 1.8em;
+    height: 65px;
+    width: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    border: none;
+    color: white;
+}
+
+.operator:hover {
+    background: #009688;
+    transform: scale(1.2);
+}
+
 .score-container {
-  width: 80%;
-  max-width: 400px;
-  margin: 20px;
-  text-align: center;
+    margin-top: 20px;
+    font-size: 1.2em;
 }
 
 .progress-bar {
-  width: 100%;
-  height: 20px;
-  background-color: #e0e0e0;
-  border-radius: 10px;
-  overflow: hidden;
+    width: 100%;
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .progress-fill {
-  height: 100%;
-  width: 0%;
-  background-color: #00c9a7;
-  transition: width 0.3s;
+    height: 100%;
+    width: 0%;
+    background: #00ff00;
+    transition: width 0.3s;
 }
